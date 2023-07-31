@@ -1,0 +1,11 @@
+sudo: required
+services: 
+  - docker
+
+
+before_install:
+  - docker build -t lokeshnk/docker-hub -f Dockerfile.dev .
+
+
+script:
+  - docker run -e CI=true lokeshnk/docker-hub npm run test
